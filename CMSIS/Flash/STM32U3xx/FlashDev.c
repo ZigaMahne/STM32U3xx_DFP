@@ -38,7 +38,40 @@
 
 
 #ifdef FLASH_MEM
-
+#ifdef STM32U3xx_2M_0800
+  struct FlashDevice const FlashDevice  =  {
+     FLASH_DRV_VERS,             // Driver Version, do not modify!
+     "STM32U3xx 2M NSecure Flash",       // Device Name
+     ONCHIP,                     // Device Type
+     0x08000000,                 // Device Start Address
+     0x00200000,                 // Device Size in Bytes (1MB)
+     1024,                       // Programming Page Size
+     0,                          // Reserved, must be 0
+     0xFF,                       // Initial Content of Erased Memory
+     400,                        // Program Page Timeout 400 mSec
+     400,                        // Erase Sector Timeout 400 mSec
+     // Specify Size and Address of Sectors
+     0x1000, 0x000000,           // Sector Size 8kB       
+     SECTOR_END
+  };
+#endif
+#ifdef STM32U3xx_2M_0C00
+  struct FlashDevice const FlashDevice  =  {
+     FLASH_DRV_VERS,             // Driver Version, do not modify!
+     "STM32U3xx 2M Secure Flash",       // Device Name
+     ONCHIP,                     // Device Type
+     0x0C000000,                 // Device Start Address
+     0x00200000,                 // Device Size in Bytes (1MB)
+     1024,                       // Programming Page Size
+     0,                          // Reserved, must be 0
+     0xFF,                       // Initial Content of Erased Memory
+     400,                        // Program Page Timeout 400 mSec
+     400,                        // Erase Sector Timeout 400 mSec
+     // Specify Size and Address of Sectors
+     0x1000, 0x000000,           // Sector Size 8kB       
+     SECTOR_END
+  };
+#endif
 #ifdef STM32U3xx_1M_0C00
   struct FlashDevice const FlashDevice  =  {
      FLASH_DRV_VERS,             // Driver Version, do not modify!
@@ -97,6 +130,40 @@
      ONCHIP,                     // Device Type
      0x08000000,                 // Device Start Address
      0x00080000,                 // Device Size in Bytes (512K)
+     1024,                       // Programming Page Size
+     0,                          // Reserved, must be 0
+     0xFF,                       // Initial Content of Erased Memory
+     400,                        // Program Page Timeout 400 mSec
+     400,                        // Erase Sector Timeout 400 mSec
+     // Specify Size and Address of Sectors
+     0x1000, 0x000000,           // Sector Size 8kB       
+     SECTOR_END
+  };
+#endif
+#ifdef STM32U3xx_256K_0C00
+  struct FlashDevice const FlashDevice  =  {
+     FLASH_DRV_VERS,             // Driver Version, do not modify!
+     "STM32U3xx 256K Secure Flash",       // Device Name
+     ONCHIP,                     // Device Type
+     0x0C000000,                 // Device Start Address
+     0x00040000,                 // Device Size in Bytes (512k)
+     1024,                       // Programming Page Size
+     0,                          // Reserved, must be 0
+     0xFF,                       // Initial Content of Erased Memory
+     400,                        // Program Page Timeout 400 mSec
+     400,                        // Erase Sector Timeout 400 mSec
+     // Specify Size and Address of Sectors
+     0x1000, 0x000000,           // Sector Size 8kB       
+     SECTOR_END
+  };
+#endif
+	#ifdef STM32U3xx_256K_0800
+  struct FlashDevice const FlashDevice  =  {
+     FLASH_DRV_VERS,             // Driver Version, do not modify!
+     "STM32U3xx 256K NSecure Flash",       // Device Name
+     ONCHIP,                     // Device Type
+     0x08000000,                 // Device Start Address
+     0x00040000,                 // Device Size in Bytes (512K)
      1024,                       // Programming Page Size
      0,                          // Reserved, must be 0
      0xFF,                       // Initial Content of Erased Memory

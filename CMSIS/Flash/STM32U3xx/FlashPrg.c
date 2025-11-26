@@ -364,8 +364,14 @@ int Init (unsigned long adr, unsigned long clk, unsigned long fnc) {
 			M32(0xE000EDD0)=0x1;
 			
 	  }
+#if defined STM32U3xx_256K_0C00 || STM32U3xx_256K_0800
+			gFlashSize = 0x40000;
+#elif defined  STM32U3xx_512K_0C00 || STM32U3xx_512K_0800
+		gFlashSize = 0x80000;
+#elif
 	gFlashSize = (M32(FLASHSIZE_BASE) & 0x00000FFF) << 10;
-  return (0);
+#endif 
+		return (0);
 }
 
 /*
